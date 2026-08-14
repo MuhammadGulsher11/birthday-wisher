@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday Surprise 🎂</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff758c,
+                    #ff7eb3,
+                    #8ec5fc
+                );
+
+            overflow: hidden;
+
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+
+            padding: 30px;
+        }
+
+        h1 {
+            color: white;
+
+            font-size: 45px;
+
+            text-shadow:
+                2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .gift {
+            font-size: 150px;
+
+            cursor: pointer;
+
+            user-select: none;
+
+            transition:
+                transform 0.3s;
+        }
+
+        .gift:hover {
+            transform:
+                scale(1.15)
+                rotate(5deg);
+        }
+
+        .click-text {
+            color: white;
+
+            font-size: 22px;
+
+            font-weight: bold;
+        }
+
+        .cake {
+            display: none;
+
+            font-size: 150px;
+
+            animation:
+                appear 1s ease;
+        }
+
+        .message {
+            display: none;
+
+            color: white;
+
+            animation:
+                appear 1s ease;
+        }
+
+        .message h2 {
+            font-size: 45px;
+
+            margin: 10px;
+        }
+
+        .message p {
+            font-size: 23px;
+        }
+
+        @keyframes appear {
+
+            from {
+                transform: scale(0);
+
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+
+                opacity: 1;
+            }
+
+        }
+
+        .confetti {
+
+            position: fixed;
+
+            top: -30px;
+
+            font-size: 28px;
+
+            pointer-events: none;
+
+            animation:
+                fall 4s linear forwards;
+        }
+
+        @keyframes fall {
+
+            to {
+
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+
+            }
+
+        }
+
+        .balloon {
+
+            position: fixed;
+
+            bottom: -100px;
+
+            font-size: 60px;
+
+            animation:
+                floatUp 7s linear forwards;
+
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+
+            to {
+
+                transform:
+                    translateY(-120vh);
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+    <h1 id="title">
+        🎁 You Have A Surprise! 🎁
+    </h1>
+
+
+    <div
+        class="gift"
+        id="gift"
+        onclick="openGift()"
+    >
+        🎁
+    </div>
+
+
+    <div
+        class="click-text"
+        id="clickText"
+    >
+        Click the gift to open your surprise! 🎁
+    </div>
+
+
+    <div
+        class="cake"
+        id="cake"
+    >
+        🎂
+    </div>
+
+
+    <div
+        class="message"
+        id="message"
+    >
+
+        <h2>
+            🎉 Happy Birthday! 🎉
+        </h2>
+
+        <p>
+            Wishing you an amazing birthday! ❤️
+        </p>
+
+        <p>
+            🎈 May your day be filled with happiness,
+            laughter and beautiful memories! 🎈
+        </p>
+
+        <p>
+            🎁 Enjoy your special day! 🎁
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+function openGift() {
+
+
+    document.getElementById("gift")
+        .style.display = "none";
+
+
+    document.getElementById("clickText")
+        .style.display = "none";
+
+
+    document.getElementById("title")
+        .innerHTML =
+        "🎉 SURPRISE! 🎉";
+
+
+    document.getElementById("cake")
+        .style.display = "block";
+
+
+    document.getElementById("message")
+        .style.display = "block";
+
+
+    createConfetti();
+
+
+    createBalloons();
+
+}
+
+
+function createConfetti() {
+
+
+    const emojis = [
+
+        "🎉",
+        "🎈",
+        "✨",
+        "🎁",
+        "❤️",
+        "⭐",
+        "🎊"
+
+    ];
+
+
+    for (let i = 0; i < 100; i++) {
+
+
+        const confetti =
+            document.createElement("div");
+
+
+        confetti.className =
+            "confetti";
+
+
+        confetti.innerHTML =
+            emojis[
+                Math.floor(
+                    Math.random()
+                    * emojis.length
+                )
+            ];
+
+
+        confetti.style.left =
+            Math.random()
+            * 100
+            + "vw";
+
+
+        confetti.style.animationDuration =
+            (2 + Math.random() * 4)
+            + "s";
+
+
+        document.body.appendChild(
+            confetti
+        );
+
+    }
+
+}
+
+
+function createBalloons() {
+
+
+    const balloons = [
+
+        "🎈",
+        "🎈",
+        "🎈",
+        "🎈",
+        "🎈"
+
+    ];
+
+
+    balloons.forEach(
+        function(balloonEmoji) {
+
+
+            const balloon =
+                document.createElement("div");
+
+
+            balloon.className =
+                "balloon";
+
+
+            balloon.innerHTML =
+                balloonEmoji;
+
+
+            balloon.style.left =
+                Math.random()
+                * 100
+                + "vw";
+
+
+            balloon.style.animationDuration =
+                (5 + Math.random() * 5)
+                + "s";
+
+
+            document.body.appendChild(
+                balloon
+            );
+
+        }
+    );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
