@@ -51,7 +51,7 @@
             font-size: 45px;
 
             text-shadow:
-                2px 2px 5px rgba(0,0,0,0.3);
+                2px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         .gift {
@@ -219,9 +219,9 @@
         id="message"
     >
 
-       <h2 id="birthdayMessage">
-    🎉 Happy Birthday! 🎉
-</h2>
+        <h2 id="birthdayMessage">
+            🎉 Happy Birthday! 🎉
+        </h2>
 
         <p>
             Wishing you an amazing birthday! ❤️
@@ -244,8 +244,33 @@
 <script>
 
 
-function openGift() {
+/* -------------------------------- */
+/* GET NAME FROM THE URL             */
+/* -------------------------------- */
 
+const params = new URLSearchParams(
+    window.location.search
+);
+
+const name = params.get("name");
+
+if (name) {
+
+    document.getElementById(
+        "birthdayMessage"
+    ).innerHTML =
+        "🎉 Happy Birthday, " +
+        name +
+        "! 🎉";
+
+}
+
+
+/* -------------------------------- */
+/* OPEN GIFT                         */
+/* -------------------------------- */
+
+function openGift() {
 
     document.getElementById("gift")
         .style.display = "none";
@@ -276,8 +301,11 @@ function openGift() {
 }
 
 
-function createConfetti() {
+/* -------------------------------- */
+/* CREATE CONFETTI                   */
+/* -------------------------------- */
 
+function createConfetti() {
 
     const emojis = [
 
@@ -293,7 +321,6 @@ function createConfetti() {
 
 
     for (let i = 0; i < 100; i++) {
-
 
         const confetti =
             document.createElement("div");
@@ -332,8 +359,11 @@ function createConfetti() {
 }
 
 
-function createBalloons() {
+/* -------------------------------- */
+/* CREATE BALLOONS                   */
+/* -------------------------------- */
 
+function createBalloons() {
 
     const balloons = [
 
@@ -348,7 +378,6 @@ function createBalloons() {
 
     balloons.forEach(
         function(balloonEmoji) {
-
 
             const balloon =
                 document.createElement("div");
