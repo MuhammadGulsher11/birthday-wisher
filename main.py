@@ -18,9 +18,7 @@ today_tuple = (
 )
 
 
-data = pandas.read_csv(
-    "birthdays.csv"
-)
+data = pandas.read_csv("birthdays.csv")
 
 
 for (index, data_row) in data.iterrows():
@@ -30,28 +28,22 @@ for (index, data_row) in data.iterrows():
         data_row["day"]
     )
 
-
     if birthday == today_tuple:
 
         birthday_person = data_row
 
-
         file_path = (
             f"letter_templates/"
-            f"letter_{random.randint(1,3)}.txt"
+            f"letter_{random.randint(1, 3)}.txt"
         )
 
-
         with open(file_path) as letter_file:
-
             contents = letter_file.read()
-
 
         contents = contents.replace(
             "[NAME]",
             birthday_person["name"]
         )
-
 
         birthday_link = (
             "https://muhammadgulsher11.github.io/"
@@ -59,8 +51,7 @@ for (index, data_row) in data.iterrows():
             + quote(str(birthday_person["name"]))
         )
 
-
-        message = f"""Subject: Happy Birthday! 🎂
+        message = f"""Subject: Happy Birthday!
 
 {contents}
 
@@ -73,7 +64,6 @@ Open your birthday surprise:
 🎂 🎉 🎈
 """
 
-
         with smtplib.SMTP(
             "smtp.gmail.com",
             587
@@ -81,18 +71,16 @@ Open your birthday surprise:
 
             connection.starttls()
 
-
             connection.login(
                 MY_EMAIL,
                 MY_PASSWORD
             )
 
-
-       connection.sendmail(
-    from_addr=MY_EMAIL,
-    to_addrs=birthday_person["email"],
-    msg=f"Subject:Happy Birthday!\n\n{contents}".encode("utf-8")
-)
+            connection.sendmail(
+                from_addr=MY_EMAIL,
+                to_addrs=birthday_person["email"],
+                msg=message.encode("utf-8")
+            )
 
         print(
             f"Birthday email sent to "
