@@ -2,7 +2,7 @@ name: Birthday Wisher
 
 on:
   schedule:
-    - cron: "40 5 * * *"
+    - cron: "0 19 * * *"
 
   workflow_dispatch:
 
