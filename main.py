@@ -88,12 +88,11 @@ Open your birthday surprise:
             )
 
 
-            connection.sendmail(
-                from_addr=MY_EMAIL,
-                to_addrs=birthday_person["email"],
-                msg=message
-            )
-
+       connection.sendmail(
+    from_addr=MY_EMAIL,
+    to_addrs=birthday_person["email"],
+    msg=f"Subject:Happy Birthday!\n\n{contents}".encode("utf-8")
+)
 
         print(
             f"Birthday email sent to "
