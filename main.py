@@ -1,4 +1,5 @@
 from datetime import datetime
+from zoneinfo import ZoneInfo
 import pandas
 import random
 import smtplib
@@ -11,7 +12,8 @@ MY_EMAIL = os.environ["MY_EMAIL"]
 MY_PASSWORD = os.environ["MY_PASSWORD"]
 
 
-today = datetime.now()
+# Pakistan local time
+today = datetime.now(ZoneInfo("Asia/Karachi"))
 
 today_tuple = (
     today.month,
