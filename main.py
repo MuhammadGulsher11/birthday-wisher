@@ -51,11 +51,12 @@ for (index, data_row) in data.iterrows():
             "[NAME]",
             str(birthday_person["name"])
         )
-birthday_link = (
-    "https://muhammadgulsher11.github.io/"
-    "Automated-Birthday-Wisher/?name="
-    + quote(str(birthday_person["name"]))
-)
+
+        birthday_link = (
+            "https://muhammadgulsher11.github.io/"
+            "Automated-Birthday-Wisher/?name="
+            + quote(str(birthday_person["name"]))
+        )
 
         message_body = f"""
 {contents}
